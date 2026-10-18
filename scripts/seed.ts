@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import RoadTender from '../lib/models/RoadTender';
 import PotholeReport from '../lib/models/PotholeReport';
 
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/roadwatch';
 
 const sampleTenders = [
   {

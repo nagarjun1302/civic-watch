@@ -14,6 +14,9 @@ export interface IPotholeReport extends Document {
   contractorName: string;
   responsibleOfficerName: string;
   status: 'Open' | 'In Review' | 'Resolved';
+  adminRemarks?: string;
+  assignedOfficial?: string;
+  resolvedAt?: Date | null;
   reportedAt: Date;
 }
 
@@ -44,6 +47,9 @@ const PotholeReportSchema = new Schema<IPotholeReport>(
       enum: ['Open', 'In Review', 'Resolved'],
       default: 'Open',
     },
+    adminRemarks: { type: String, default: '' },
+    assignedOfficial: { type: String, default: '' },
+    resolvedAt: { type: Date, default: null },
     reportedAt: { type: Date, default: Date.now },
   },
   { timestamps: true }

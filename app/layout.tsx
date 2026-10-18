@@ -28,6 +28,9 @@ export default function RootLayout({
             <Link href="/reports" className="text-gray-600 hover:text-gray-900 font-medium">
               Browse Reports
             </Link>
+            <Link href="/admin/complaints" className="text-gray-600 hover:text-gray-900 font-medium">
+              🛡️ Admin
+            </Link>
             <Link
               href="/report"
               className="bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors"

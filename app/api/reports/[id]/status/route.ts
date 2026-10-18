@@ -9,15 +9,33 @@ export async function PATCH(
   try {
     await connectDB();
 
-    const { status } = await req.json();
+    const body = await req.json();
+    const { status, adminRemarks, assignedOfficial } = body;
 
-    if (!['Open', 'In Review', 'Resolved'].includes(status)) {
-      return NextResponse.json({ error: 'Invalid status value' }, { status: 400 });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const updateData: any = {};
+
+    if (status !== undefined) {
+      if (!['Open', 'In Review', 'Resolved'].includes(status)) {
+        return NextResponse.json({ error: 'Invalid status value' }, { status: 400 });
+      }
+      updateData.status = status;
+      if (status === 'Resolved') {
+        updateData.resolvedAt = new Date();
+      }
+    }
+
+    if (adminRemarks !== undefined) {
+      updateData.adminRemarks = adminRemarks;
+    }
+
+    if (assignedOfficial !== undefined) {
+      updateData.assignedOfficial = assignedOfficial;
     }
 
     const report = await PotholeReport.findByIdAndUpdate(
       params.id,
-      { status },
+      updateData,
       { new: true }
     ).lean();
 
