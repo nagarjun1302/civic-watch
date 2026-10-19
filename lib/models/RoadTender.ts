@@ -6,6 +6,8 @@ export interface IRoadTender extends Document {
   organisation: string;
   department: string;
   category: string;
+  subCategory?: string;
+  projectStage?: string;
   status: 'Live' | 'Closed' | 'Cancelled';
   publishedDate: string;
   closingDate: string;
@@ -33,6 +35,11 @@ const RoadTenderSchema = new Schema<IRoadTender>(
     organisation: { type: String, required: true },
     department: { type: String, required: true },
     category: { type: String, required: true },
+    subCategory: { type: String, default: '' },
+    projectStage: {
+      type: String,
+      default: 'Completed (In DLP)',
+    },
     status: { type: String, enum: ['Live', 'Closed', 'Cancelled'], required: true },
     publishedDate: { type: String, required: true },
     closingDate: { type: String, required: true },
@@ -59,3 +66,4 @@ const RoadTender: Model<IRoadTender> =
   mongoose.models.RoadTender || mongoose.model<IRoadTender>('RoadTender', RoadTenderSchema);
 
 export default RoadTender;
+

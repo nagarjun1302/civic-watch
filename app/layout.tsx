@@ -6,9 +6,9 @@ import Link from 'next/link';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'RoadWatch — Citizen Road Accountability',
+  title: 'CivicWatch — Government Tenders & Civic Accountability',
   description:
-    'Report potholes, find responsible contractors, and file accountability complaints using government tender data.',
+    'Explore public works tenders (buildings, construction, roads, water supply, drainage) near your location and hold contractors accountable under Defect Liability Periods.',
 };
 
 export default function RootLayout({
@@ -19,23 +19,43 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between sticky top-0 z-50 shadow-sm">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl">🛣️</span>
-            <span className="font-bold text-lg text-gray-900">RoadWatch</span>
+        <nav className="bg-white border-b border-gray-200 px-4 sm:px-6 py-3 flex items-center justify-between sticky top-0 z-50 shadow-xs">
+          <Link href="/" className="flex items-center gap-2.5">
+            <span className="text-2xl">🏛️</span>
+            <div>
+              <span className="font-extrabold text-base sm:text-lg text-gray-900 tracking-tight block leading-tight">
+                CivicWatch
+              </span>
+              <span className="text-[10px] text-gray-500 font-medium block">
+                Public Tenders & Accountability
+              </span>
+            </div>
           </Link>
-          <div className="flex items-center gap-4 text-sm">
-            <Link href="/reports" className="text-gray-600 hover:text-gray-900 font-medium">
-              Browse Reports
+          <div className="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm">
+            <Link
+              href="/"
+              className="text-gray-600 hover:text-gray-900 font-medium px-2 py-1.5 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              📍 Tenders Near Me
             </Link>
-            <Link href="/admin/complaints" className="text-gray-600 hover:text-gray-900 font-medium">
+            <Link
+              href="/reports"
+              className="text-gray-600 hover:text-gray-900 font-medium px-2 py-1.5 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              📋 Reports
+            </Link>
+            <Link
+              href="/admin/complaints"
+              className="text-gray-600 hover:text-gray-900 font-medium px-2 py-1.5 rounded-lg hover:bg-gray-100 transition-colors hidden sm:inline"
+            >
               🛡️ Admin
             </Link>
             <Link
               href="/report"
-              className="bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors"
+              className="bg-blue-600 text-white px-3.5 py-2 rounded-xl font-semibold hover:bg-blue-700 transition-colors shadow-xs flex items-center gap-1.5"
             >
-              📸 Report
+              <span>📸</span>
+              <span>Report Issue</span>
             </Link>
           </div>
         </nav>

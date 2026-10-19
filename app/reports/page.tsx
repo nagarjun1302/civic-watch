@@ -8,14 +8,18 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 const CITIES = [
   'ALL',
+  'Chennai',
+  'Tambaram',
+  'Avadi',
+  'Velachery',
+  'Porur',
+  'Ambattur',
   'Bengaluru',
   'Mumbai',
   'Delhi',
-  'Chennai',
   'Hyderabad',
-  'Pune',
-  'Visakhapatnam',
 ];
+
 
 interface Report {
   _id: string;

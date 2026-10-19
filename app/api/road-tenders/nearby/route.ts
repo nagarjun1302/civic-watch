@@ -3,6 +3,8 @@ import connectDB from '@/lib/db';
 import RoadTender from '@/lib/models/RoadTender';
 import { haversineDistance } from '@/lib/helpers';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     await connectDB();
@@ -16,7 +18,15 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'lat and lng are required' }, { status: 400 });
     }
 
-    const tenders = await RoadTender.find().lean();
+    const category = searchParams.get('category');
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const query: any = {};
+    if (category && category !== 'All' && category !== 'All Categories') {
+      query.category = { $regex: category, $options: 'i' };
+    }
+
+    const tenders = await RoadTender.find(query).lean();
 
     const nearby = tenders
       .map((tender) => {
@@ -26,12 +36,13 @@ export async function GET(req: NextRequest) {
           tender.roadLocation.lat,
           tender.roadLocation.lng
         );
-        return { ...tender, distance };
+        return { ...tender, distance: Math.round(distance * 10) / 10 };
       })
-      .filter((t) => t.distance <= radius + t.roadLocation.radiusKm)
+      .filter((t) => t.distance <= radius + (t.roadLocation?.radiusKm || 0))
       .sort((a, b) => a.distance - b.distance);
 
     return NextResponse.json(nearby);
+
   } catch (error) {
     console.error('GET /api/road-tenders/nearby error:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });

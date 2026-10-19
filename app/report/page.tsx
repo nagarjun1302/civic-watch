@@ -26,30 +26,33 @@ type SeverityType = (typeof SEVERITY)[number];
 type DangerType = (typeof DANGER)[number];
 
 const CITIES = [
+  'Chennai',
+  'Tambaram',
+  'Avadi',
+  'Velachery',
+  'Porur',
+  'Ambattur',
+  'Sholinganallur',
   'Bengaluru',
   'Mumbai',
   'Delhi',
-  'Chennai',
   'Hyderabad',
-  'Pune',
-  'Kolkata',
-  'Ahmedabad',
-  'Jaipur',
-  'Visakhapatnam',
 ];
 
 const CITY_COORDS: Record<string, { lat: number; lng: number }> = {
+  Chennai: { lat: 13.0827, lng: 80.2707 },
+  Tambaram: { lat: 12.9249, lng: 80.1180 },
+  Avadi: { lat: 13.1147, lng: 80.1017 },
+  Velachery: { lat: 12.9752, lng: 80.2215 },
+  Porur: { lat: 13.0382, lng: 80.1565 },
+  Ambattur: { lat: 13.1143, lng: 80.1548 },
+  Sholinganallur: { lat: 12.8997, lng: 80.2270 },
   Bengaluru: { lat: 12.9716, lng: 77.5946 },
   Mumbai: { lat: 19.076, lng: 72.8777 },
   Delhi: { lat: 28.6139, lng: 77.209 },
-  Chennai: { lat: 13.0827, lng: 80.2707 },
   Hyderabad: { lat: 17.385, lng: 78.4867 },
-  Pune: { lat: 18.5204, lng: 73.8567 },
-  Kolkata: { lat: 22.5726, lng: 88.3639 },
-  Ahmedabad: { lat: 23.0225, lng: 72.5714 },
-  Jaipur: { lat: 26.9124, lng: 75.7873 },
-  Visakhapatnam: { lat: 17.6868, lng: 83.2185 },
 };
+
 
 function fileToBase64(file: File): Promise<string> {
   return new Promise((resolve, reject) => {

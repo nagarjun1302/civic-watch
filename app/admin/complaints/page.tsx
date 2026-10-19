@@ -27,17 +27,18 @@ interface Report {
 
 const CITIES = [
   'ALL',
+  'Chennai',
+  'Tambaram',
+  'Avadi',
+  'Velachery',
+  'Porur',
+  'Ambattur',
   'Bengaluru',
   'Mumbai',
   'Delhi',
-  'Chennai',
   'Hyderabad',
-  'Pune',
-  'Kolkata',
-  'Ahmedabad',
-  'Jaipur',
-  'Visakhapatnam',
 ];
+
 
 export default function AdminComplaintsPage() {
   const router = useRouter();

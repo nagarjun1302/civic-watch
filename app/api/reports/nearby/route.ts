@@ -3,6 +3,8 @@ import connectDB from '@/lib/db';
 import PotholeReport from '@/lib/models/PotholeReport';
 import { haversineDistance } from '@/lib/helpers';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     await connectDB();
