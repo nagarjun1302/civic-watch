@@ -1,4 +1,4 @@
-# 🏛️ CivicWatch (RoadWatch) — Citizen Public Works & Tender Accountability Platform
+# 🏛️ CivicWatch by TendAI - Citizen Public Works & Tender Accountability Platform
 
 > Bridges citizen grievances directly to government public works tenders, contractor accountability, and **Defect Liability Periods (DLP)** across all infrastructure sectors.
 
